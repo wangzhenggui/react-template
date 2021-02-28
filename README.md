@@ -81,3 +81,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ### husky配置
 参考package.json中的配置，此工程使用的版本是4.x;对于5.x版本的使用方式和现在不一样，使用时候需注意
 
+### 接入anymock
+(anymockPC接入指导手册)[https://www.yuque.com/anymock/docs/chrome]
