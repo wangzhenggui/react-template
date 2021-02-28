@@ -68,3 +68,16 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### Eslint配置
+默认使用airbnb配置来保证代码质量
+
+### prettier配置
+使用prettier来保证项目中的代码风格一致，如需修改，需要团队内部沟通，最终修改.prettierrc即可，修改文件之后，可能不会立即生效，重启IDE
+
+### stylelint配置
+通过stylelint来对样式代码进行统一规范
+
+### husky配置
+参考package.json中的配置，此工程使用的版本是4.x;对于5.x版本的使用方式和现在不一样，使用时候需注意
+
