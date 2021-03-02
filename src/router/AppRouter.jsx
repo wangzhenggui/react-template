@@ -9,26 +9,52 @@ const mapperRouterType = {
 
 const LoadingPage = () => `Loading!!!`;
 
-const renderRoutes = (configs) => {
+const renderRoutes = (configs, lastPath = '') => {
+  if (!Array.isArray(configs)) {
+    return null;
+  }
+
   return (
-    <Suspense fallback={<LoadingPage />}>
-      <Switch>
-        {configs.map((route = {}) => {
-          const { redirect = '', path = '', exact = true } = route;
-          return redirect ? (
-            <Redirect from={path} to={redirect} exact={exact} key={route.path} />
-          ) : (
-            <Route {...route} key={route.path} />
+    <Switch>
+      {configs.map((route = {}) => {
+        const {
+          redirect = '',
+          path = '',
+          exact = false,
+          strict = false,
+          component: Component,
+          routes: children = [],
+        } = route;
+        const currentPath = `${lastPath}${path}`;
+        if (redirect) {
+          return (
+            <Redirect from={currentPath} to={`${lastPath}${redirect}`} exact={exact} key={route.path} strict={strict} />
           );
-        })}
-      </Switch>
-    </Suspense>
+        }
+        return (
+          <Route
+            key={currentPath}
+            path={currentPath}
+            exact={exact}
+            strict={strict}
+            render={() => {
+              const renderChildrenRoute = renderRoutes(children, currentPath);
+              return (
+                <Suspense fallback={<LoadingPage />}>
+                  <Component route={{ ...route, path: currentPath }}>{renderChildrenRoute}</Component>
+                </Suspense>
+              );
+            }}
+          />
+        );
+      })}
+    </Switch>
   );
 };
 
 const AppRouter = () => {
   const WrapRouter = mapperRouterType[router] || BrowserRouter;
-  return <WrapRouter>{renderRoutes(routes)}</WrapRouter>;
+  return <WrapRouter>{renderRoutes(routes, '')}</WrapRouter>;
 };
 
 export default AppRouter;
