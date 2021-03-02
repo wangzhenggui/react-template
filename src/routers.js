@@ -1,7 +1,7 @@
 import { lazy } from 'react';
-// import DefaultLayout from './layout/DefaultLayout';
+import DefaultLayout from './layout/DefaultLayout';
 
-// const routerPrefix = '/user/shop';
+const routerPrefix = '/user/shop';
 const routes = [
   {
     path: '/add',
@@ -28,13 +28,12 @@ const routes = [
   },
 ];
 
-// export default [
-//   {
-//     path: routerPrefix,
-//     component: DefaultLayout,
-//     routes,
-//   },
-// ];
-export default routes;
+export default [
+  {
+    path: routerPrefix,
+    component: DefaultLayout,
+    routes,
+  },
+];
 
 export const router = 'browserRouter';
