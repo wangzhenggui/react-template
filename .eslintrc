@@ -16,13 +16,20 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "react-hooks"
     ],
     "globals": {
         "window": true
     },
     "rules": {
         "react/prop-types": 0,
-        "react/jsx-props-no-spreading": 0
+        "react/jsx-props-no-spreading": 0,
+        "react-hooks/rules-of-hooks": "error", // 检查 Hook 的规则
+        "react-hooks/exhaustive-deps": [
+            "warn", {
+                "additionalHooks": "useRecoilCallback"
+            }
+        ]
     }
 }

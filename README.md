@@ -31,4 +31,4 @@
 ## 问题记录
 - 修改了eslint等配置文件必须重启之后才能生效
 - router的渲染逻辑routerRouter单独抽离一个包，后期自己维护
-- 将react.renderDom这个渲染想隐藏起来。怎么实现？使用者只要配置routes之后就可以进入开发流程
+- 将React.renderDom这个渲染想隐藏起来。怎么实现？使用者只要配置routes之后就可以进入开发流程
