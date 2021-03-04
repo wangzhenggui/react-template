@@ -1,13 +1,16 @@
 import React, { Suspense } from 'react';
-import { HashRouter, BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { HashRouter, BrowserRouter, Switch, Route, Redirect, MemoryRouter, StaticRouter } from 'react-router-dom';
+import PageWrapper from './PageWrapper';
 import routes, { router } from '../routers';
 
 const mapperRouterType = {
   hashRouter: HashRouter,
   browserRouter: BrowserRouter,
+  memoryRouter: MemoryRouter,
+  staticRouter: StaticRouter,
 };
 
-const LoadingPage = () => `Loading!!!`;
+const LoadingPage = () => null;
 
 const renderRoutes = (configs, lastPath = '') => {
   if (!Array.isArray(configs)) {
@@ -20,6 +23,7 @@ const renderRoutes = (configs, lastPath = '') => {
         const {
           redirect = '',
           path = '',
+          title = '',
           exact = false,
           strict = false,
           component: Component,
@@ -41,7 +45,9 @@ const renderRoutes = (configs, lastPath = '') => {
               const renderChildrenRoute = renderRoutes(children, currentPath);
               return (
                 <Suspense fallback={<LoadingPage />}>
-                  <Component route={{ ...route, path: currentPath }}>{renderChildrenRoute}</Component>
+                  <PageWrapper title={title}>
+                    <Component route={{ ...route, path: currentPath }}>{renderChildrenRoute}</Component>
+                  </PageWrapper>
                 </Suspense>
               );
             }}
