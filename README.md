@@ -74,6 +74,13 @@ export const router = 'browserRouter';
 - routerPrefix 路由前缀；添加之后，该路由下的其他子路由不用在添加前缀
 - router 路由方式：browserRouter/hashRouter 这俩种常见路由方式；还支持其他react-router5中支持的路由方式
 
+
+## 状态管理工具
+该框架默认使用了Recoil作为状态管理；
+- 如果需要redux或者mobx作为管理工具，可以自行引入
+- Recoil作为FB公司的新宠儿，hooks的编程理念，和react天生的搭配使用，学习的成本与redux的生态圈相比，要容易很多
+- [中文文档](https://www.recoiljs.cn/)
+- 更多功能，大家一起探讨
 ## 问题记录
 - 修改了eslint等配置文件必须重启之后才能生效
 - router的渲染逻辑routerRouter单独抽离一个包，后期自己维护
