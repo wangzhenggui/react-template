@@ -1,30 +1,13 @@
 import { lazy } from 'react';
 import DefaultLayout from './layout/DefaultLayout';
 
-const routerPrefix = '/user/shop';
+const routerPrefix = '';
 const routes = [
   {
-    path: '/add',
+    path: '/index',
     exact: true,
-    component: lazy(() => import('./pages/AddShop')),
-    title: '增加门店',
-  },
-  {
-    path: '/sub',
-    exact: true,
-    component: lazy(() => import('./pages/SubShop')),
-    title: '删除门店',
-  },
-  {
-    path: '/detail',
-    exact: true,
-    component: lazy(() => import('./pages/ShopDetail')),
-    title: '门店详情',
-  },
-  {
-    path: '/*',
-    exact: true,
-    redirect: '/detail',
+    component: lazy(() => import('./pages/Home')),
+    title: '首页',
   },
 ];
 
