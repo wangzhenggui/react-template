@@ -1,9 +1,9 @@
 import React from 'react';
 import { useRecoilState } from 'recoil';
-import Atom from '../../../../store/addShopAtom';
+import { atoms } from '../../../../store';
 
 const TextInput = () => {
-  const [text, setText] = useRecoilState(Atom.textState);
+  const [text, setText] = useRecoilState(atoms.textState);
   return <input type="text" value={text} onChange={(e) => setText(e.target.value)} />;
 };
 

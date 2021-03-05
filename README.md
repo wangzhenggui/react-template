@@ -28,6 +28,52 @@
 - `config/craco.config.js` 自定义框架配置、框架基于cra脚手架，需要对原功能拓展可在这里配置
 
 
+### 路由配置
+在`src/routers.js` 中配置我们的页面路由，配置参考如下：
+```
+import { lazy } from 'react';
+import DefaultLayout from './layout/DefaultLayout';
+
+const routerPrefix = '/user/shop'; // 路由前缀
+const routes = [
+  {
+    path: '/add',
+    exact: true,
+    component: lazy(() => import('./pages/AddShop')),
+    title: '增加门店',
+  },
+  {
+    path: '/sub',
+    exact: true,
+    component: lazy(() => import('./pages/SubShop')),
+    title: '删除门店',
+  },
+  {
+    path: '/detail',
+    exact: true,
+    component: lazy(() => import('./pages/ShopDetail')),
+    title: '门店详情',
+  },
+  {
+    path: '/*',
+    exact: true,
+    redirect: '/detail',
+  },
+];
+
+export default [
+  {
+    path: routerPrefix,
+    component: DefaultLayout,
+    routes,
+  },
+];
+
+export const router = 'browserRouter';
+```
+- routerPrefix 路由前缀；添加之后，该路由下的其他子路由不用在添加前缀
+- router 路由方式：browserRouter/hashRouter 这俩种常见路由方式；还支持其他react-router5中支持的路由方式
+
 ## 问题记录
 - 修改了eslint等配置文件必须重启之后才能生效
 - router的渲染逻辑routerRouter单独抽离一个包，后期自己维护
