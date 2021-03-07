@@ -85,6 +85,27 @@ export const router = 'browserRouter';
 ## 视觉库
 使用Ant Design作为项目的视觉库，通过craco-antd插件扩展Antd的主题色、优化问题
 [插件接入问答](https://github.com/DocSpring/craco-antd)
+
+## 请求库
+使用umi-request作为请求库。
+umi-request 与 fetch, axios 异同
+| 特性       | umi-request    | fetch          | axios          |
+| :--------- | :------------- | :------------- | :------------- |
+| 实现       | 浏览器原生支持 | 浏览器原生支持 | XMLHttpRequest |
+| 大小       | 9k             | 4k (polyfill)  | 14k            |
+| query 简化 | ✅             | ❌             | ✅             |
+| post 简化  | ✅             | ❌             | ❌             |
+| 超时       | ✅             | ❌             | ✅             |
+| 缓存       | ✅             | ❌             | ❌             |
+| 错误检查   | ✅             | ❌             | ❌             |
+| 错误处理   | ✅             | ❌             | ✅             |
+| 拦截器     | ✅             | ❌             | ✅             |
+| 前缀       | ✅             | ❌             | ❌             |
+| 后缀       | ✅             | ❌             | ❌             |
+| 处理 gbk   | ✅             | ❌             | ❌             |
+| 中间件     | ✅             | ❌             | ❌             |
+| 取消请求   | ✅             | ❌             | ✅             |
+
 ## 问题记录
 - Q: 修改了eslint等配置文件必须重启之后才能生效
   - A: 通过nodemon监听配置文件变化重新启动服务器
@@ -92,6 +113,3 @@ export const router = 'browserRouter';
 - 将React.renderDom这个渲染想隐藏起来。怎么实现？使用者只要配置routes之后就可以进入开发流程
 - Q: 在使用npm install安装依赖包之后，出现[issues](https://github.com/DocSpring/craco-less/issues/30);
   - A: 使用yarn install安装依赖包
-## 待完成
-- 请求库
-- 视觉库
