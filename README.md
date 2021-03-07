@@ -81,7 +81,17 @@ export const router = 'browserRouter';
 - Recoil作为FB公司的新宠儿，hooks的编程理念，和react天生的搭配使用，学习的成本与redux的生态圈相比，要容易很多
 - [中文文档](https://www.recoiljs.cn/)
 - 更多功能，大家一起探讨
+
+## 视觉库
+使用Ant Design作为项目的视觉库，通过craco-antd插件扩展Antd的主题色、优化问题
+[插件接入问答](https://github.com/DocSpring/craco-antd)
 ## 问题记录
-- 修改了eslint等配置文件必须重启之后才能生效
+- Q: 修改了eslint等配置文件必须重启之后才能生效
+  - A: 通过nodemon监听配置文件变化重新启动服务器
 - router的渲染逻辑routerRouter单独抽离一个包，后期自己维护
 - 将React.renderDom这个渲染想隐藏起来。怎么实现？使用者只要配置routes之后就可以进入开发流程
+- Q: 在使用npm install安装依赖包之后，出现[issues](https://github.com/DocSpring/craco-less/issues/30);
+  - A: 使用yarn install安装依赖包
+## 待完成
+- 请求库
+- 视觉库
