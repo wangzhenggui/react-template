@@ -7,6 +7,9 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "antd": "^4.13.1",
+    "babel-plugin-import": "^1.13.3",
+    "craco-antd": "^1.19.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
@@ -16,7 +19,7 @@
     "webpackbar": "^5.0.0-3"
   },
   "scripts": {
-    "start": "FAST_REFRESH=true craco start",
+    "start": "nodemon -w ./config/craco.config.js -w ./style/antd.customize.less --exec \"FAST_REFRESH=true  craco start\"",
     "build": "npm run lint && craco build",
     "test": "craco test",
     "lint": "eslint --ext .js,.jsx src/ && stylelint src/**/*.css",
@@ -52,6 +55,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^4.3.8",
     "lint-staged": "^10.5.4",
+    "nodemon": "^2.0.7",
     "prettier": "^2.2.1",
     "stylelint": "^13.11.0",
     "stylelint-config-standard": "^20.0.0"
