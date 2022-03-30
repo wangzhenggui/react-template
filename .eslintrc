@@ -28,9 +28,12 @@
         "window": true
     },
     "rules": {
+        "react/jsx-uses-react": "off",
+        "react/react-in-jsx-scope": "off",
         "react/prop-types": 0,
         "react/jsx-props-no-spreading": 0,
         "no-use-before-define": "off",
+        "no-param-reassign": "off",
         "@typescript-eslint/no-use-before-define": ["error"],
         "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
         "@typescript-eslint/explicit-function-return-type": [0, { "allowTypedFunctionExpressions": true }],
@@ -40,6 +43,8 @@
                 "additionalHooks": "useRecoilCallback"
             }
         ],
+        "@typescript-eslint/no-var-requires": "off",
+        "import/no-extraneous-dependencies": "off",
         "import/extensions": ["error", "ignorePackages", {
             "js": "never",
             "jsx": "never",

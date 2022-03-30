@@ -1,13 +1,21 @@
-import React from 'react';
 import { Button } from 'antd';
+import { useAppSelector, useAppDispatch } from '../../app/hooks';
+import { decrement, increment, selectCount } from './counterSlice';
 import TextInput from './components/TextInput';
 
 const AddShop = () => {
+  const count = useAppSelector(selectCount);
+  const dispatch = useAppDispatch();
   return (
     <>
-      <h2>Home</h2>
+      <h2>{count}</h2>
       <TextInput />
-      <Button type="primary">Button</Button>
+      <Button type="primary" onClick={() => dispatch(increment())}>
+        increment
+      </Button>
+      <Button type="primary" onClick={() => dispatch(decrement())}>
+        decrement
+      </Button>
     </>
   );
 };

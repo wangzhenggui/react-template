@@ -41,6 +41,9 @@ module.exports = {
     },
     resolve: {
       extensions: ['.js', '.ts', '.jsx', '.tsx'],
+      alias: {
+        store: path.resolve(__dirname, 'src/store/'),
+      },
     },
     plugins: [
       new WebpackBar({
