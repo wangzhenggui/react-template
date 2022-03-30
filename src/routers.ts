@@ -19,4 +19,4 @@ export default [
   },
 ];
 
-export const router = 'browserRouter';
+export const router = 'hashRouter';

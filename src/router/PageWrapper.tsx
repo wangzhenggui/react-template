@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 
-const PageWrapper = ({ children, title }) => {
+const PageWrapper: React.FC<{
+  title?: string;
+}> = ({ children, title }) => {
   // 设置页面title
   useEffect(() => {
     if (title) document.title = title;

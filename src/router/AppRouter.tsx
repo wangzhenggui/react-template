@@ -12,7 +12,7 @@ const mapperRouterType = {
 
 const LoadingPage = () => null;
 
-const renderRoutes = (configs, lastPath = '') => {
+const renderRoutes = (configs: any[], lastPath = '') => {
   if (!Array.isArray(configs)) {
     return null;
   }

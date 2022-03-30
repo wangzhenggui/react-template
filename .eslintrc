@@ -5,19 +5,24 @@
     },
     "extends": [
         "airbnb",
+        "airbnb/hooks",
         "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended",
         "plugin:prettier/recommended"
     ],
     "parserOptions": {
         "ecmaFeatures": {
-            "jsx": true
+            "jsx": true,
+            "tsx": true,
+            "modules": true
         },
-        "ecmaVersion": 12,
+        "ecmaVersion": 2020,
         "sourceType": "module"
     },
     "plugins": [
         "react",
-        "react-hooks"
+        "react-hooks",
+        "@typescript-eslint"
     ],
     "globals": {
         "window": true
@@ -25,11 +30,32 @@
     "rules": {
         "react/prop-types": 0,
         "react/jsx-props-no-spreading": 0,
+        "no-use-before-define": "off",
+        "@typescript-eslint/no-use-before-define": ["error"],
+        "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+        "@typescript-eslint/explicit-function-return-type": [0, { "allowTypedFunctionExpressions": true }],
         "react-hooks/rules-of-hooks": "error", // 检查 Hook 的规则
         "react-hooks/exhaustive-deps": [
             "warn", {
                 "additionalHooks": "useRecoilCallback"
             }
-        ]
-    }
+        ],
+        "import/extensions": ["error", "ignorePackages", {
+            "js": "never",
+            "jsx": "never",
+            "ts": "never",
+            "tsx": "never",
+            "mjs": "never"
+          }]
+    },
+    "settings": {
+        "import/resolver": {
+          "node": {
+            "extensions": [".js", ".jsx", ".ts", ".tsx"]
+          },
+          "typescript": {
+            "directory": "./tsconfig.json"
+          }
+        }
+      }
 }

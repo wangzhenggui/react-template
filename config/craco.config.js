@@ -4,6 +4,28 @@ const WebpackBar = require('webpackbar');
 const path = require('path');
 
 module.exports = {
+  babel: {
+    presets: [
+      [
+        '@babel/preset-env',
+        {
+          modules: false, // 对ES6的模块文件不做转化，以便使用tree shaking、sideEffects等
+          useBuiltIns: 'entry',
+          corejs: {
+            version: 3, // 使用core-js@3
+            proposals: true,
+          },
+          targets: {
+            chrome: '60',
+            firefox: '60',
+            ie: '9',
+            safari: '10',
+            edge: '17',
+          },
+        },
+      ],
+    ],
+  },
   style: {
     postcss: {
       env: {
@@ -14,6 +36,12 @@ module.exports = {
     },
   },
   webpack: {
+    entry: {
+      main: path.resolve(__dirname, './src/index.tsx'),
+    },
+    resolve: {
+      extensions: ['.js', '.ts', '.jsx', '.tsx'],
+    },
     plugins: [
       new WebpackBar({
         name: when(process.env.NODE_ENV === 'development', () => 'development'),
@@ -61,4 +89,13 @@ module.exports = {
       },
     },
   ],
+  devServer: {
+    port: 8000,
+    proxy: {
+      '/api': {
+        target: '',
+        changeOrigin: true,
+      },
+    },
+  },
 };
