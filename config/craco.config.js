@@ -1,5 +1,5 @@
-const { when } = require('@craco/craco');
 const CracoAntDesignPlugin = require('craco-antd');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackBar = require('webpackbar');
 const path = require('path');
 
@@ -36,18 +36,32 @@ module.exports = {
     },
   },
   webpack: {
-    entry: {
-      main: path.resolve(__dirname, './src/index.tsx'),
-    },
-    resolve: {
-      extensions: ['.js', '.ts', '.jsx', '.tsx'],
-      alias: {
-        store: path.resolve(__dirname, 'src/store/'),
-      },
+    configure: (webpackConfig, { env, paths }) => {
+      if (env === 'development') return webpackConfig;
+      webpackConfig.entry = {
+        main: path.resolve(__dirname, '../src/index.tsx'),
+      };
+      webpackConfig.output = {
+        ...webpackConfig.output,
+        path: path.join(__dirname, '../build'),
+        filename: '[name].[chunkhash].js',
+        chunkFilename: '[name].[chunkhash].chunk.js',
+        publicPath: '/orderPass/',
+      };
+      webpackConfig.resolve = {
+        extensions: ['.js', '.ts', '.jsx', '.tsx'],
+        alias: {
+          common: path.resolve(__dirname, '../src/common/'),
+          store: path.resolve(__dirname, '../app/store/'),
+        },
+      };
+      return webpackConfig;
     },
     plugins: [
-      new WebpackBar({
-        name: when(process.env.NODE_ENV === 'development', () => 'development'),
+      new WebpackBar(),
+      new HtmlWebpackPlugin({
+        filename: 'index.html',
+        template: path.resolve(__dirname, '../public/index.html'),
       }),
     ],
   },
