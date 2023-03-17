@@ -1,9 +1,13 @@
 import React from 'react';
+import { Layout } from 'antd';
+import SwitchTheme from 'components/SwitchTheme';
 
 const DefaultLayout = ({ children = [] }) => {
   return (
     <>
-      <h1>DefaultLayout</h1>
+      <Layout.Header className="bg-white dark:bg-gray-600">
+        <SwitchTheme />
+      </Layout.Header>
       {children}
     </>
   );
