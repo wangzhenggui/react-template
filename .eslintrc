@@ -1,66 +1,70 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "airbnb",
+    "airbnb/hooks",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true,
+      "tsx": true,
+      "modules": true
     },
-    "extends": [
-        "airbnb",
-        "airbnb/hooks",
-        "plugin:react/recommended",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:prettier/recommended"
-    ],
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true,
-            "tsx": true,
-            "modules": true
-        },
-        "ecmaVersion": 2020,
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react",
-        "react-hooks",
-        "@typescript-eslint"
-    ],
-    "globals": {
-        "window": true
-    },
-    "rules": {
-        "react/jsx-uses-react": "off",
-        "react/react-in-jsx-scope": "off",
-        "react/prop-types": 0,
-        "react/jsx-props-no-spreading": 0,
-        "no-use-before-define": "off",
-        "no-param-reassign": "off",
-        "@typescript-eslint/no-use-before-define": ["error"],
-        "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
-        "@typescript-eslint/explicit-function-return-type": [0, { "allowTypedFunctionExpressions": true }],
-        "react-hooks/rules-of-hooks": "error", // 检查 Hook 的规则
-        "react-hooks/exhaustive-deps": [
-            "warn", {
-                "additionalHooks": "useRecoilCallback"
-            }
-        ],
-        "@typescript-eslint/no-var-requires": "off",
-        "import/no-extraneous-dependencies": "off",
-        "import/extensions": ["error", "ignorePackages", {
-            "js": "never",
-            "jsx": "never",
-            "ts": "never",
-            "tsx": "never",
-            "mjs": "never"
-          }]
-    },
-    "settings": {
-        "import/resolver": {
-          "node": {
-            "extensions": [".js", ".jsx", ".ts", ".tsx"]
-          },
-          "typescript": {
-            "directory": "./tsconfig.json"
-          }
-        }
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "react-hooks", "@typescript-eslint"],
+  "globals": {
+    "window": true
+  },
+  "rules": {
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": 0,
+    "react/jsx-props-no-spreading": 0,
+    "no-use-before-define": "off",
+    "no-param-reassign": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+    "@typescript-eslint/explicit-function-return-type": [0, { "allowTypedFunctionExpressions": true }],
+    "react-hooks/rules-of-hooks": "error", // 检查 Hook 的规则
+    "react-hooks/exhaustive-deps": [
+      "warn",
+      {
+        "additionalHooks": "useRecoilCallback"
       }
+    ],
+    "@typescript-eslint/no-var-requires": "off",
+    "import/no-extraneous-dependencies": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never",
+        "mjs": "never"
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      },
+      "typescript": {
+        "directory": "./tsconfig.json"
+      },
+      "webpack": {
+        "config": "./config/craco.config.js"
+      }
+    }
+  }
 }

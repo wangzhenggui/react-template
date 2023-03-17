@@ -1,4 +1,5 @@
 import { Button } from 'antd';
+import FlexBox from 'components/FlexBox';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { decrement, increment, selectCount } from './counterSlice';
 import TextInput from './components/TextInput';
@@ -16,6 +17,7 @@ const AddShop = () => {
       <Button type="primary" onClick={() => dispatch(decrement())}>
         decrement
       </Button>
+      <FlexBox />
     </>
   );
 };

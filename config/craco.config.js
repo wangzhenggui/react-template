@@ -2,6 +2,8 @@ const CracoAntDesignPlugin = require('craco-antd');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackBar = require('webpackbar');
 const path = require('path');
+const tailwindcss = require('tailwindcss');
+const autoprefixer = require('autoprefixer');
 
 module.exports = {
   babel: {
@@ -28,6 +30,7 @@ module.exports = {
   },
   style: {
     postcss: {
+      plugins: [tailwindcss, autoprefixer],
       env: {
         autoprefixer: {
           cascade: true,
@@ -53,6 +56,7 @@ module.exports = {
         alias: {
           common: path.resolve(__dirname, '../src/common/'),
           store: path.resolve(__dirname, '../app/store/'),
+          components: path.resolve(__dirname, '../app/components/'),
         },
       };
       return webpackConfig;
