@@ -1,5 +1,5 @@
 // 对umi-request的扩展
-import { extend } from 'umi-request';
+import { extend, ResponseError } from 'umi-request';
 import { notification } from 'antd';
 
 const TIME_DELAY = 3000; // 超时时间
@@ -25,9 +25,9 @@ const COMMON_ERROR = '系统异常，请稍后再试';
 /**
  * 异常处理程序
  */
-const errorHandler = (error) => {
-  const { response = {} } = error;
-  const errorText = response.errorMsg || codeMessage[response.status] || COMMON_ERROR;
+const errorHandler = (error: ResponseError) => {
+  const { response } = error;
+  const errorText = codeMessage[response.status as keyof typeof codeMessage] || COMMON_ERROR;
   const { status, url } = response;
 
   notification.error({
