@@ -13,6 +13,12 @@ const routes = [
 
 export default [
   {
+    path: '/login',
+    exact: true,
+    component: lazy(() => import('./pages/Login')),
+    title: '登录页',
+  },
+  {
     path: routerPrefix,
     component: DefaultLayout,
     routes,
