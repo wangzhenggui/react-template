@@ -113,9 +113,10 @@ module.exports = {
   devServer: {
     port: 8000,
     proxy: {
-      '/api': {
-        target: '',
+      '/api/': {
+        target: 'https://proapi.azurewebsites.net',
         changeOrigin: true,
+        pathRewrite: { '^': '' },
       },
     },
   },
