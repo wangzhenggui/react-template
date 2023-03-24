@@ -1,9 +1,12 @@
 import { Form, Input, Button, message } from 'antd';
 import { login, currentUser } from 'services/user';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setUser } from 'store/user/slice';
 
 const FormLogin = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const [form] = Form.useForm();
   const handleLogin = async () => {
     const formValue = await form.getFieldsValue();
@@ -16,7 +19,7 @@ const FormLogin = () => {
       if (msg.status === 'ok') {
         message.success('登录成功');
         const user = await currentUser();
-        console.debug('user', user);
+        dispatch(setUser(user.data));
         const urlParams = new URL(window.location.href).searchParams;
         history.push(urlParams.get('redirect') || '/');
         return;
